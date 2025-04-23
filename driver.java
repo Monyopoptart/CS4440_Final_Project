@@ -1,5 +1,8 @@
 public class driver {
   public static void main(String[] args) {
-    System.out.println("Hello World");
+    ReadWord reader = new ReadWord("words.txt");
+
+    String word = reader.getRandomWord();
+    System.out.println("Picked word: " + word);
   }
 }
