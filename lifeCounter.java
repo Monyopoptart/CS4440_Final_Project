@@ -1,23 +1,21 @@
-//Example code to pull from
-
-//global variables
-private static int life;
-public boolean changeLife = true;
-public static int howChangeLife = 0;//select which function to use
-
-
-//private functions
-private void setLife(int x){
-    life = x;
-}
-private void decrementLife(){
-    life--;
-}
-private static int whatIsLife(){
-    return life;
-}
 
 class LifeCouterThread extends Thread {
+    private static int life;
+    public boolean changeLife = true;
+    public static int howChangeLife = 0;//select which function to use
+
+    private void setLife(int x){
+        life = x;
+    }
+    private void decrementLife(){
+        life--;
+    }
+    public int whatIsLife(){
+        return life;
+    }
+    public void selectHowChangeLife(int x){
+        howChangeLife = x;
+    }
     @Override
     public void run(){
         while (changeLife){
@@ -49,13 +47,13 @@ class LifeCouterThread extends Thread {
 public class lifeCounter {
     public static void main(String[] args){
         //test code
-        System.out.println(whatIsLife());
         LifeCouterThread lifeCouterThread = new LifeCouterThread();
         Thread t1 = new Thread(lifeCouterThread);
+        System.out.println(((LifeCouterThread) t1).whatIsLife());
         t1.start();
-        System.out.println(whatIsLife());
-        howChangeLife = 1;
-        System.out.println(whatIsLife());
+        System.out.println(((LifeCouterThread) t1).whatIsLife());
+        ((LifeCouterThread)t1).selectHowChangeLife(1); 
+        System.out.println(((LifeCouterThread) t1).whatIsLife());
 
         
     }
