@@ -34,7 +34,7 @@ class CountdownTimer implements Runnable {
                 }
                 
                 try {
-                    Thread.sleep(1000); // Check every second instead of every 10 seconds
+                    Thread.sleep(1000); 
                 } catch (InterruptedException e) {
                     System.out.println("Timer interrupted");
                     return;
@@ -44,7 +44,7 @@ class CountdownTimer implements Runnable {
             if (running) {
                 System.out.println("Countdown complete!");
                 running = false;
-                System.exit(0); // Terminate the program when timer completes
+                System.exit(0); 
             }
         }
     }
@@ -56,16 +56,13 @@ class CountdownTimer implements Runnable {
 
 public class threadsTimer {
     public static void main(String[] args) {
-        int duration = 60; // Countdown duration in seconds
+        int duration = 60;
         CountdownTimer countdownTimer = new CountdownTimer(duration);
 
-        // Create a thread for the countdown timer
         Thread timerThread = new Thread(countdownTimer);
 
-        // Start the timer thread
         timerThread.start();
 
-        // Start a new thread to listen for user input
         Thread inputThread = new Thread(() -> {
             Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -75,7 +72,7 @@ public class threadsTimer {
             }
         });
 
-        inputThread.setDaemon(true); // Make input thread a daemon so it won't prevent JVM exit
+        inputThread.setDaemon(true); 
         inputThread.start();
 
         System.out.println("The timer has started!");
