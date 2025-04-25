@@ -25,6 +25,7 @@ public class HangmanAnimator implements Runnable {
     @Override
     public void run() {
         while (running) {
+            System.out.println("\033[H\033[2J");
             System.out.println("\nHangman:");
             System.out.println(stages[state]);
             try {
