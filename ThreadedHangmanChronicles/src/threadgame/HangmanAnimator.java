@@ -18,6 +18,10 @@ public class HangmanAnimator implements Runnable {
         this.state = Math.min(state, stages.length - 1);
     }
 
+    // public String getCurrentState() {
+    //     return stages[state];
+    // }
+
     public void stop() {
         running = false;
     }
@@ -25,11 +29,10 @@ public class HangmanAnimator implements Runnable {
     @Override
     public void run() {
         while (running) {
-            System.out.println("\033[H\033[2J");
             System.out.println("\nHangman:");
             System.out.println(stages[state]);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(15000);
             } catch (InterruptedException ignored) {}
         }
     }

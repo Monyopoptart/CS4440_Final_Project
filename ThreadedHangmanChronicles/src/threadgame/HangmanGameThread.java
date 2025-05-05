@@ -19,6 +19,8 @@ public class HangmanGameThread implements Runnable {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         while (wrongGuesses < 6) {
+            System.out.println("\nHangman:");
+            // System.out.println(animator.getCurrentState());
             displayWord();
             System.out.print("Guess a letter: ");
             String input = scanner.nextLine().toLowerCase();
@@ -40,6 +42,8 @@ public class HangmanGameThread implements Runnable {
                 animator.setState(wrongGuesses);
                 System.out.println("Wrong guess! Attempts left: " + (6 - wrongGuesses));
             }
+
+            System.out.println("Guessed letters: " + guessed);
 
             if (word.chars().allMatch(c -> guessed.contains((char) c))) {
                 System.out.println("🎉 You guessed it! The word was: " + word);
