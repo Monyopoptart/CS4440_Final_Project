@@ -7,7 +7,6 @@ import java.util.Set;
 public class HangmanAnimator implements Runnable {
     private int state = 0;
     private boolean running = true;
-    //private int timeRemaining = 120;
 
     private String word;
     private final Set<Character> guessed = new HashSet<>();
@@ -53,29 +52,30 @@ public class HangmanAnimator implements Runnable {
     public void run() {
         try (Scanner scanner = new Scanner(System.in)) {
             while (running) {
+                System.out.println("\033[H\033[2J");//Reset the text box
                 if (wrongGuesses < 6) {
-                    System.out.println("\033[H\033[2J");//Reset the text box
+
                     System.out.println("\nHangman:"); //Display Hangman
                     System.out.println(stages[state]); // Display the status of the hang man
                     displayWord(); // display blank words and correct letters
                     displayguesses(); // Display guessed letters
-                    System.out.print("Guess a letter: ");
+                    System.out.print("Guess a letter: \n");
                     String input = scanner.nextLine().toLowerCase();
                     
                     if (input.length() != 1 || !Character.isLetter(input.charAt(0))) { //Ensures guess is only 1 character long
                         System.out.println("Please enter a single letter.");
-                        try {
+                        try{
                             Thread.sleep(1000);
-                        } catch (InterruptedException ignored) {}
+                        } catch (InterruptedException ignored){}
                         continue;
                     }
    
                     char guess = input.charAt(0); //Checks if input has been guessed already
                     if (guessed.contains(guess)) {
                         System.out.println("Already guessed.");
-                        try {
+                        try{
                             Thread.sleep(1000);
-                        } catch (InterruptedException ignored) {}
+                        } catch (InterruptedException ignored){}
                         continue;
                     }
    
@@ -87,16 +87,17 @@ public class HangmanAnimator implements Runnable {
                     }
    
                     if (word.chars().allMatch(c -> guessed.contains((char) c))) { //Guesses have been checked
-                        System.out.println("🎉 You guessed it! The word was: " + word);
+                        System.out.println("You guessed it! The word was: " + word);
                         return;
                     }
                 }
                 if (wrongGuesses == 6){ //Too many wrong guesses
-                    System.out.println("💀 Game Over! The word was: " + word);
+                    System.out.println("Game Over! The word was: " + word);
                     stopThread();
                 }
                 try {
                     Thread.sleep(1000);
+                    
                 } catch (InterruptedException ignored) {}
             }
         }

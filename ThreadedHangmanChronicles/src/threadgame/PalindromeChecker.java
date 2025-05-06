@@ -11,9 +11,9 @@ public class PalindromeChecker implements Runnable {
     public void run() {
         String reversed = new StringBuilder(word).reverse().toString();
         if (word.equalsIgnoreCase(reversed)) {
-            System.out.println("✅ The word is a palindrome!");
+            System.out.println("\n\nThe word is a palindrome!");
         } else {
-            System.out.println("❌ The word is not a palindrome.");
+            System.out.println("\n\nThe word is not a palindrome.");
         }
     }
 }
