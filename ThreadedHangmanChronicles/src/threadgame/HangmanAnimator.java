@@ -85,7 +85,7 @@ public class HangmanAnimator implements Runnable {
    
                     if (word.chars().allMatch(c -> guessed.contains((char) c))) { //Guesses have been checked
                         System.out.println("You guessed it! The word was: " + word);
-                        return;
+                        stopThread();
                     }
                 }
                 if (wrongGuesses == 6){ //Too many wrong guesses
