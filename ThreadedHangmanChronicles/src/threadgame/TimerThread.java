@@ -21,7 +21,7 @@ public class TimerThread implements Runnable {
         displayseconds = seconds;
         try {
             while(displayseconds>0){
-                Thread.sleep(1000);
+                Thread.sleep(1000);//Waits a second
                 displayseconds--;
                 System.out.print("\rTime Remaining: " + displayseconds + " ");
                 if (!gameThread.isAlive()){

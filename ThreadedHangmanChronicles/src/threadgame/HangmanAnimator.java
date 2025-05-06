@@ -64,10 +64,7 @@ public class HangmanAnimator implements Runnable {
                     
                     if (input.length() != 1 || !Character.isLetter(input.charAt(0))) { //Ensures guess is only 1 character long
                         System.out.println("Please enter a single letter.");
-                        try{
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ignored){}
-                        continue;
+                        
                     }
    
                     char guess = input.charAt(0); //Checks if input has been guessed already
