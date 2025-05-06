@@ -1,4 +1,4 @@
-package threadgame;
+/*package threadgame;
 
 import java.util.HashSet;
 import java.util.Scanner;
@@ -61,4 +61,4 @@ public class HangmanGameThread implements Runnable {
         }
         System.out.println(display.toString().trim());
     }
-}
+}*/
